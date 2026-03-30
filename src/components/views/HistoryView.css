@@ -1,0 +1,94 @@
+.history-view { max-width: 720px; animation: fadeUp 0.35s ease-out; }
+
+/* ─── SUMMARY ─── */
+.history-summary {
+  display: flex; align-items: stretch;
+  background: var(--surface-2); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl); overflow: hidden; margin-bottom: 24px;
+}
+
+.summary-card { display: flex; align-items: center; gap: 14px; flex: 1; padding: 20px 22px; }
+.summary-card + .summary-card { border-left: 1px solid var(--glass-border); }
+
+.summary-icon {
+  width: 40px; height: 40px; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+}
+.credit-icon { background: rgba(16,185,129,0.12); color: var(--success); border: 1px solid rgba(16,185,129,0.2); }
+.debit-icon  { background: rgba(248,113,113,0.1);  color: var(--danger);  border: 1px solid rgba(248,113,113,0.2); }
+.balance-icon{ background: rgba(37,99,235,0.12);   color: var(--blue-300); border: 1px solid rgba(37,99,235,0.2); }
+
+.summary-card > div { display: flex; flex-direction: column; gap: 3px; }
+.summary-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+.summary-value { font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.summary-value.credit { color: var(--success); }
+.summary-value.debit  { color: var(--danger); }
+
+/* ─── CONTROLS ─── */
+.history-controls { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+
+.search-box {
+  flex: 1; display: flex; align-items: center; gap: 10px;
+  background: var(--surface-2); border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-md); padding: 10px 16px;
+  transition: border-color 0.2s;
+}
+.search-box:focus-within { border-color: var(--blue-500); }
+.search-box input {
+  flex: 1; border: none; background: transparent;
+  font-size: 14px; color: var(--text-primary);
+  font-family: var(--font-body);
+}
+.search-box input::placeholder { color: var(--text-muted); }
+.search-icon { color: var(--text-muted); font-size: 14px; }
+
+.filter-tabs { display: flex; gap: 6px; }
+.filter-tab {
+  padding: 9px 16px; border-radius: var(--radius-md);
+  font-size: 12px; font-weight: 700; font-family: var(--font-body);
+  background: var(--surface-2); color: var(--text-muted);
+  border: 1.5px solid var(--glass-border); cursor: pointer; transition: all 0.2s;
+}
+.filter-tab:hover  { border-color: rgba(37,99,235,0.4); color: var(--blue-300); }
+.filter-tab.active { background: rgba(37,99,235,0.15); color: var(--blue-300); border-color: rgba(37,99,235,0.3); }
+
+/* ─── LIST ─── */
+.history-list {
+  background: var(--surface-2); border-radius: var(--radius-xl);
+  overflow: hidden; border: 1px solid var(--glass-border);
+}
+
+.history-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s;
+}
+.history-item:last-child { border-bottom: none; }
+.history-item:hover { background: var(--glass-bg); }
+
+/* FIX: namespaced hist-tx-* to avoid conflicts with HomeView tx-* classes */
+.hist-tx-icon-wrap {
+  width: 40px; height: 40px; background: var(--ink-700);
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0; border: 1px solid var(--glass-border);
+}
+
+.hist-tx-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.hist-tx-name { font-size: 14px; font-weight: 600; color: var(--text-primary); display: block; }
+.hist-tx-meta { font-size: 12px; color: var(--text-muted); }
+
+.hist-tx-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.hist-tx-amount { font-family: var(--font-mono); font-size: 14px; font-weight: 700; }
+.hist-tx-amount.credit { color: var(--success); }
+.hist-tx-amount.debit  { color: var(--text-secondary); }
+
+.hist-tx-badge {
+  font-size: 10px; font-weight: 700; padding: 2px 8px;
+  border-radius: 99px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.hist-tx-badge.credit { background: rgba(16,185,129,0.1); color: var(--success); border: 1px solid rgba(16,185,129,0.2); }
+.hist-tx-badge.debit  { background: rgba(37,99,235,0.1);  color: var(--blue-300); border: 1px solid rgba(37,99,235,0.2); }
+
+.empty-state { padding: 56px; text-align: center; color: var(--text-muted); font-size: 14px; }
